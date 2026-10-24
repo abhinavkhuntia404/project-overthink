@@ -4,7 +4,7 @@ services:
     name: project-overthink
     env: node
     plan: free
-    buildCommand: npm install && npm run build
+    buildCommand: pip install -r python/requirements.txt && npm install && npm run build
     startCommand: node server.js
     healthCheckPath: /api/health
     autoDeploy: true
