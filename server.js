@@ -510,4 +510,24 @@ app.listen(PORT, () => {
   console.log(`[PROJECT OVERTHINK] Gemini API Key present: ${geminiService.isConfigured()}`);
   console.log(`[PROJECT OVERTHINK] Model configured: ${geminiService.getModelName()}`);
   console.log(`[PROJECT OVERTHINK] SQLite database active at ${path.join(DATA_DIR, 'overthink.db')}`);
+
+  // Anti-Sleep / Keep-Alive ping mechanism for free hosting tiers (Render, Koyeb)
+  const externalUrl = process.env.RENDER_EXTERNAL_URL || process.env.APP_URL || process.env.PING_URL;
+  if (externalUrl) {
+    const PING_INTERVAL = 13 * 60 * 1000; // 13 minutes (Render sleeps at 15m of inactivity)
+    console.log(`[KEEP-ALIVE] Anti-sleep daemon initialized for ${externalUrl} (interval: 13m)`);
+    setInterval(async () => {
+      try {
+        const pingEndpoint = `${externalUrl.replace(/\/$/, '')}/api/health`;
+        const pingRes = await fetch(pingEndpoint);
+        if (pingRes.ok) {
+          console.log(`[KEEP-ALIVE] Heartbeat ping sent to ${pingEndpoint} [${pingRes.status}]`);
+        } else {
+          console.warn(`[KEEP-ALIVE] Heartbeat ping returned [${pingRes.status}]`);
+        }
+      } catch (pingErr) {
+        console.warn(`[KEEP-ALIVE] Ping failed:`, pingErr.message);
+      }
+    }, PING_INTERVAL);
+  }
 });

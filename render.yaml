@@ -1,3 +1,4 @@
+
 services:
   - type: web
     name: project-overthink
@@ -5,6 +6,7 @@ services:
     plan: free
     buildCommand: npm install && npm run build
     startCommand: node server.js
+    healthCheckPath: /api/health
     autoDeploy: true
     envVars:
       - key: NODE_ENV

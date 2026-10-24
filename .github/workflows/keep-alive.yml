@@ -1,0 +1,26 @@
+name: Render Free Tier Keep-Alive Ping
+
+on:
+  schedule:
+    # Runs every 14 minutes to prevent Render free-tier spinning down (15m sleep limit)
+    - cron: '*/14 * * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub Actions dashboard
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Render Service
+        env:
+          APP_URL: ${{ secrets.RENDER_APP_URL }}
+        run: |
+          TARGET_URL="${APP_URL:-https://project-overthink.onrender.com}"
+          echo "Sending keep-alive heartbeat to $TARGET_URL/api/health..."
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$TARGET_URL/api/health" || echo "000")
+          echo "Response code: $STATUS"
+          if [ "$STATUS" -eq 200 ]; then
+            echo "SUCCESS: Project Overthink is awake and responding!"
+          else
+            echo "Waking up or retrying main URL..."
+            curl -s -I "$TARGET_URL" || true
+          fi
