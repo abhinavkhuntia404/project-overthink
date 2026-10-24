@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Outer glowing accent ring -->
+  <circle cx="32" cy="32" r="30" fill="#F3F1EC" stroke="#20211F" stroke-width="1.5" stroke-opacity="0.1"/>
+  <!-- Interrupted circular thought loop -->
+  <!-- Main loop arch (circles around from top to bottom-right, then breaks off into an escape tangent) -->
+  <path d="M 32 10 A 22 22 0 1 1 12 36" stroke="#20211F" stroke-width="4.5" stroke-linecap="round"/>
+  <!-- Tangent line escaping the loop -->
+  <path d="M 12 36 C 12 28 22 18 36 18" stroke="#5966E8" stroke-width="4.5" stroke-linecap="round"/>
+  <!-- Inner focus node -->
+  <circle cx="36" cy="18" r="4.5" fill="#5966E8" />
+  <!-- Restrained amber spark marker -->
+  <circle cx="48" cy="42" r="3" fill="#DCA96B" />
+</svg>
