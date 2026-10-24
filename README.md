@@ -2,6 +2,13 @@
 
 > **"One message. A thousand possibilities. Serious investigations. Hilarious conclusions."**
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-project--overthink.onrender.com-brightgreen?style=for-the-badge&logo=render)](https://project-overthink.onrender.com)
+[![GitHub License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
+[![Google Gemini](https://img.shields.io/badge/AI-Gemini%203.8%20Flash-orange?style=for-the-badge&logo=google)](https://ai.google.dev/)
+
+🌐 **Live Deployment**: **[https://project-overthink.onrender.com](https://project-overthink.onrender.com)**  
+📡 **Live Health API**: **[https://project-overthink.onrender.com/api/health](https://project-overthink.onrender.com/api/health)**
+
 A complete, production-grade, deployment-ready AI application that analyzes ambiguous, dry, or anxiety-inducing messages through dual-engine forensic linguistics (Node.js + Python + Google Gemini AI).
 
 ---

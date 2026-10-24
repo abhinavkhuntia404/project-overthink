@@ -2,6 +2,7 @@
   "name": "project-overthink",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://project-overthink.onrender.com",
   "type": "module",
   "scripts": {
     "dev": "concurrently -n \"API,VITE\" -c \"cyan,magenta\" \"node server.js\" \"vite\"",
